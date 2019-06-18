@@ -1,9 +1,12 @@
-const fs = require('fs');
+const fsp = require('fs').promises;
 
-//const data = fs.readFileSync(__filename);
+async function main() {
+    const data = await fsp.readFile(__filename);
+    console.log(data);
+}
 
-fs.readFile(__filename, (err, data) => {
-  console.log(data);
+main().then(() => {
+    console.log('Filename has been show to you.');
 });
 
 console.log('Hello');
