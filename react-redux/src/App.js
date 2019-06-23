@@ -5,7 +5,10 @@ import axios from 'axios';
 
 async function getData() {
   const resp = await axios.get('https://bakesaleforgood.com/api/deals');
-  ReactDOM.render(<App deals={resp.data} />, document.getElementById('root'));
+  ReactDOM.render(
+    <App initialDeals={resp.data} />,
+    document.getElementById('root')
+  );
 }
 
 getData();

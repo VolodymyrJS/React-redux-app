@@ -22,17 +22,25 @@ export default class DealItem extends React.Component {
   general = () => ({
     backgroundColor: '#222'
   });
+  //   renderImageByClick = () => {
+  //       if () {}
+  //   };
   render() {
     const { title, price, media } = this.props.deal;
     return (
-      <div style={this.general()}>
+      <div
+        style={this.general()}
+        onClick={() => this.props.onClick(this.props.deal.key)}
+      >
         <div style={this.styleTitle()}>{title}</div>
         <div style={this.stylePrice()}>{price}</div>
-        <div>
-          {media.map(imgUrl => (
-            <img style={this.styleImg()} key={Math.random()} src={imgUrl} />
-          ))}
-        </div>
+        {this.props.deal.isExpanded && (
+          <div>
+            {media.map(imgUrl => (
+              <img style={this.styleImg()} key={Math.random()} src={imgUrl} />
+            ))}
+          </div>
+        )}
       </div>
     );
   }

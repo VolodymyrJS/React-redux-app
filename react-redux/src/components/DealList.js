@@ -6,7 +6,11 @@ export default class DealList extends React.Component {
     return (
       <div className="deal-list">
         {this.props.deals.map(deal => (
-          <DealItem key={deal.key} deal={deal} />
+          <DealItem
+            key={deal.key}
+            onClick={this.props.onDealClick}
+            deal={deal}
+          />
         ))}
       </div>
     );
