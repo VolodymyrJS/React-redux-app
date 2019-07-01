@@ -30,6 +30,7 @@
     "webpack": "^4.35.0"
   },
   "scripts": {
+    "serve": "npx serve public/",
     "webpack": "npx webpack-cli -d -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
