@@ -1,8 +1,10 @@
 import React from 'react';
+import uuidv from 'uuid/v4';
+import { Consumer } from '../AppContext';
 
 export default class DealItem extends React.Component {
   styleImg = () => ({
-    height: '150px',
+    height: '50px',
     padding: '10px',
     borderRadius: '7px',
     borderBottom: '2px solid #ccc',
@@ -23,22 +25,52 @@ export default class DealItem extends React.Component {
     backgroundColor: '#222'
   });
   render() {
-    const { title, price, media } = this.props.deal;
+    const { artist, name, playcount, image } = this.props.deal;
+    var imageSrc = image.map(element => element['#text']);
+
     return (
-      <div
-        style={this.general()}
-        onClick={() => this.props.onClick(this.props.deal.key)}
-      >
-        <div style={this.styleTitle()}>{title}</div>
-        <div style={this.stylePrice()}>{price}</div>
-        {this.props.deal.isExpanded && (
-          <div>
-            {media.map(imgUrl => (
-              <img alt='img' style={this.styleImg()} key={Math.random()} src={imgUrl} />
-            ))}
-          </div>
-        )}
-      </div>
+      <Consumer>
+        {appContext => {
+          return (
+            <div
+              style={this.general()}
+              onClick={() =>
+                appContext.expandOneDeal(this.props.deal.listeners)
+              }
+            >
+              <div style={this.styleTitle()}>{name}</div>
+              <div style={this.styleTitle()}>
+                {artist.name}
+                <div>
+                  <button
+                    style={{
+                      margin: '10px',
+                      padding: '10px',
+                      borderRadius: '7px',
+                      fontSize: '20px'
+                    }}
+                  >
+                    About artist
+                  </button>
+                </div>
+              </div>
+              <div style={this.stylePrice()}>{playcount}</div>
+              {this.props.deal.isExpanded && (
+                <div>
+                  {imageSrc.map(imgUrl => (
+                    <img
+                      alt="img"
+                      style={this.styleImg()}
+                      key={uuidv()}
+                      src={imgUrl}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        }}
+      </Consumer>
     );
   }
 }

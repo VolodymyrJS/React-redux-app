@@ -1,4 +1,5 @@
 import React from 'react';
+import uuidv from 'uuid/v4';
 import DealItem from './DealItem';
 
 export default class DealList extends React.Component {
@@ -6,11 +7,7 @@ export default class DealList extends React.Component {
     return (
       <div className="deal-list">
         {this.props.deals.map(deal => (
-          <DealItem
-            key={deal.key}
-            onClick={this.props.onDealClick}
-            deal={deal}
-          />
+          <DealItem key={uuidv()} deal={deal} />
         ))}
       </div>
     );
