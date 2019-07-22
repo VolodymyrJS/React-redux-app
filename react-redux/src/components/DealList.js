@@ -7,7 +7,7 @@ class DealList extends React.Component {
   render() {
     return (
       <div className="deal-list">
-        {this.props.deals.map(deal => (
+        {this.props.tracks.map(deal => (
           <div key={uuidv()}>
             <DealItem deal={deal} />
           </div>
@@ -18,8 +18,7 @@ class DealList extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  deals: state.deals,
-  dealsLen: state.dealsLen
-}); //data
+  tracks: state.tracks
+});
 
 export default connect(mapStateToProps)(DealList);

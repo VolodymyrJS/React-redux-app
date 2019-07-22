@@ -1,7 +1,13 @@
 import React from 'react';
 import uuidv from 'uuid/v4';
 import { connect } from 'react-redux';
-import { expandOneDeal, hideOneDeal } from '../store/actions';
+import {
+  expandOneDeal,
+  hideOneDeal,
+  getNewStateToTest
+} from '../store/actions';
+import { Link } from 'react-router-dom';
+import About from './About';
 
 class DealItem extends React.Component {
   styleImg = () => ({
@@ -25,6 +31,7 @@ class DealItem extends React.Component {
   general = () => ({
     backgroundColor: '#222'
   });
+
   hideOneDealClick = event => {
     event.preventDefault();
     event.stopPropagation();
@@ -34,6 +41,12 @@ class DealItem extends React.Component {
     event.preventDefault();
     this.props.expandOneDeal(this.props.deal.listeners);
   };
+
+  getNewStateToTestClick = event => {
+    event.preventDefault();
+    this.props.getNewStateToTest(this.props.test);
+  };
+
   render() {
     const { artist, name, playcount, image } = this.props.deal;
     var imageSrc = image.map(element => element['#text']);
@@ -42,7 +55,12 @@ class DealItem extends React.Component {
         <div style={this.styleTitle()}>{name}</div>
         <div style={this.styleTitle()}>
           {artist.name}
+
           <div>
+            <button onClick={this.getNewStateToTestClick}>TEST</button>
+          </div>
+
+          <Link to="/about">
             <button
               style={{
                 margin: '10px',
@@ -53,7 +71,8 @@ class DealItem extends React.Component {
             >
               About artist
             </button>
-          </div>
+          </Link>
+          <Link to={`/product/${artist.name}`}>Some text</Link>
         </div>
         <div style={this.stylePrice()}>{playcount}</div>
         {this.props.deal.isExpanded && (
@@ -76,5 +95,5 @@ class DealItem extends React.Component {
 
 export default connect(
   null,
-  { expandOneDeal, hideOneDeal }
+  { expandOneDeal, hideOneDeal, getNewStateToTest }
 )(DealItem);

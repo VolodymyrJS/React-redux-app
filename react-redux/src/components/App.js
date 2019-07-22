@@ -1,19 +1,17 @@
 import React from 'react';
 import DealList from './DealList';
-import FetchMoreArtistButton from './FetchMoreArtistButton';
+import About from './About';
+import Artist from './ProductView';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 class App extends React.Component {
   render() {
     return (
-      <React.Fragment>
-        <div>
-          <DealList />
-          <FetchMoreArtistButton
-          //deals={this.deals}
-          // dealsLenght={this.props.dealsLen}
-          />
-        </div>
-      </React.Fragment>
+      <Router>
+        <Route exact path="/" component={DealList} />
+        <Route exact path="/about" component={About} />
+        <Route path="/product/:artist" component={Artist} />
+      </Router>
     );
   }
 }
