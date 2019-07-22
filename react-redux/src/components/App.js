@@ -2,7 +2,8 @@ import React from 'react';
 import DealList from './DealList';
 import About from './About';
 import Artist from './ProductView';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
+import { browserHistory } from 'react-router-redux';
 
 class App extends React.Component {
   render() {
