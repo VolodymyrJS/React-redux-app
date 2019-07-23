@@ -12,8 +12,9 @@ async function getData() {
   const aboutArtist = await axios.get(queryArtist);
 
   const store = storeConfig({
-    tracks: listOfTracks.data.tracks.track,
-    info: aboutArtist.data
+    tracks: listOfTracks.data.tracks.track.slice(0, 5),
+    info: aboutArtist.data,
+    artistName: ''
   });
 
   ReactDOM.render(

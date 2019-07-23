@@ -1,22 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import { Consumer } from '../AppContext';
+import { fetchMoreTracks } from '../store/actions';
 
 class FetchMoreArtistButton extends React.Component {
   render() {
     return (
-      <button onClick={this.props.fetchMoreTracks}>Show more tracks...</button>
+      <button
+        disabled={this.props.isFetching}
+        onClick={this.props.fetchMoreTracks}
+      >
+        {this.props.isFetching ? 'Fetching tracks' : 'Fetch more tracks'}
+      </button>
     );
   }
 }
 
-const cb2 = () => ({
-  fetchMoreTracks: () => {
-    //our fetch data
-  }
-});
-
 export default connect(
   null,
-  cb2
+  { fetchMoreTracks }
 )(FetchMoreArtistButton);

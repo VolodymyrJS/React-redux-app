@@ -4,10 +4,9 @@ import { connect } from 'react-redux';
 import {
   expandOneDeal,
   hideOneDeal,
-  getNewStateToTest
+  putArtistDataToState
 } from '../store/actions';
 import { Link } from 'react-router-dom';
-import About from './About';
 import { styles } from '../css/tracks';
 
 class DealItem extends React.Component {
@@ -25,22 +24,27 @@ class DealItem extends React.Component {
     const { artist, name, playcount, image } = this.props.deal;
     var imageSrc = image.map(element => element['#text']);
     return (
-      <div style={ styles.general } onClick={this.showImagesForOneArtist}>
-        <div style={ styles.styleTitle }>{name}</div>
-        <div style={ styles.styleTitle }>
+      <div style={styles.general} onClick={this.showImagesForOneArtist}>
+        <div style={styles.styleTitle}>{name}</div>
+        <div style={styles.styleTitle}>
           {artist.name}
           <Link to={`/about/${artist.name}`}>
             <button>About artist</button>
           </Link>
-          <Link to={`/product/${artist.name}`}>About artist</Link>
+          <Link
+            onClick={this.props.putArtistDataToState}
+            to={`/product/${artist.name}`}
+          >
+            About artist
+          </Link>
         </div>
-        <div style={ styles.stylePrice }>{playcount}</div>
+        <div style={styles.stylePrice}>{playcount}</div>
         {this.props.deal.isExpanded && (
           <div>
             {imageSrc.map(imgUrl => (
               <img
                 alt="img"
-                style={ styles.styleImg }
+                style={styles.styleImg}
                 key={uuidv()}
                 src={imgUrl}
               />
@@ -55,5 +59,5 @@ class DealItem extends React.Component {
 
 export default connect(
   null,
-  { expandOneDeal, hideOneDeal, getNewStateToTest }
+  { expandOneDeal, hideOneDeal, putArtistDataToState }
 )(DealItem);

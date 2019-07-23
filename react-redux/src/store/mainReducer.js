@@ -15,10 +15,15 @@ export default (state, action) => {
           return artist.listeners !== action.dealKey;
         })
       };
-    case 'CHANGE_STATE_TO_TEST':
+    case 'SHOW_ALL_TRACKS':
       return {
         ...state,
-        test: 'test'
+        tracks: [...state.tracks, ...action.allTracks]
+      };
+    case 'GET_INFO_ABOUT_ARTIST':
+      return {
+        ...state,
+        artistData: action.artistData
       };
     default:
       return state;
