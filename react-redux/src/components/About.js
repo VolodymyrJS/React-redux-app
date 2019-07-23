@@ -13,6 +13,7 @@ class About extends React.Component {
 
     return (
       <div>
+        <h2>{this.props.match.params.artist}</h2>
         <h3>Artist name:</h3>
         <div className="artist-name">{this.props.info.artist.name}</div>
         <div className="artist-images">

@@ -2,11 +2,13 @@ import React from 'react';
 import uuidv from 'uuid/v4';
 import DealItem from './DealItem';
 import { connect } from 'react-redux';
+//import  '../css/track.css';
 
 class DealList extends React.Component {
   render() {
     return (
       <div className="deal-list">
+        <h1 className="title">List of tracks</h1>
         {this.props.tracks.map(deal => (
           <div key={uuidv()}>
             <DealItem deal={deal} />

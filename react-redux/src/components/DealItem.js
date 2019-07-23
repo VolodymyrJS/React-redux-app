@@ -8,30 +8,9 @@ import {
 } from '../store/actions';
 import { Link } from 'react-router-dom';
 import About from './About';
+import { styles } from '../css/tracks';
 
 class DealItem extends React.Component {
-  styleImg = () => ({
-    height: '50px',
-    padding: '10px',
-    borderRadius: '7px',
-    borderBottom: '2px solid #ccc',
-    borderTop: '2px solid #ccc'
-  });
-  styleTitle = () => ({
-    fontSize: '35px',
-    fontStyle: 'italic',
-    padding: '10px',
-    color: 'lightblue'
-  });
-  stylePrice = () => ({
-    fontSize: '30px',
-    color: 'orange',
-    padding: '10px'
-  });
-  general = () => ({
-    backgroundColor: '#222'
-  });
-
   hideOneDealClick = event => {
     event.preventDefault();
     event.stopPropagation();
@@ -42,45 +21,26 @@ class DealItem extends React.Component {
     this.props.expandOneDeal(this.props.deal.listeners);
   };
 
-  getNewStateToTestClick = event => {
-    event.preventDefault();
-    this.props.getNewStateToTest(this.props.test);
-  };
-
   render() {
     const { artist, name, playcount, image } = this.props.deal;
     var imageSrc = image.map(element => element['#text']);
     return (
-      <div style={this.general()} onClick={this.showImagesForOneArtist}>
-        <div style={this.styleTitle()}>{name}</div>
-        <div style={this.styleTitle()}>
+      <div style={ styles.general } onClick={this.showImagesForOneArtist}>
+        <div style={ styles.styleTitle }>{name}</div>
+        <div style={ styles.styleTitle }>
           {artist.name}
-
-          <div>
-            <button onClick={this.getNewStateToTestClick}>TEST</button>
-          </div>
-
-          <Link to="/about">
-            <button
-              style={{
-                margin: '10px',
-                padding: '10px',
-                borderRadius: '7px',
-                fontSize: '20px'
-              }}
-            >
-              About artist
-            </button>
+          <Link to={`/about/${artist.name}`}>
+            <button>About artist</button>
           </Link>
-          <Link to={`/product/${artist.name}`}>Some text</Link>
+          <Link to={`/product/${artist.name}`}>About artist</Link>
         </div>
-        <div style={this.stylePrice()}>{playcount}</div>
+        <div style={ styles.stylePrice }>{playcount}</div>
         {this.props.deal.isExpanded && (
           <div>
             {imageSrc.map(imgUrl => (
               <img
                 alt="img"
-                style={this.styleImg()}
+                style={ styles.styleImg }
                 key={uuidv()}
                 src={imgUrl}
               />
