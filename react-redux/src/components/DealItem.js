@@ -24,16 +24,15 @@ class DealItem extends React.Component {
     const { artist, name, playcount, image } = this.props.deal;
     var imageSrc = image.map(element => element['#text']);
     return (
-      <div style={styles.general} onClick={this.showImagesForOneArtist}>
+      <div style={styles.general}>
         <div style={styles.styleTitle}>{name}</div>
         <div style={styles.styleTitle}>
           {artist.name}
-          <Link to={`/about/${artist.name}`}>
-            <button>About artist</button>
-          </Link>
-          <Link to={`/product/${artist.name}`}>
-            About artist
-          </Link>
+          <div>
+            <Link to={`/product/${artist.name}`}>
+                About artist
+            </Link>
+          </div>
         </div>
         <div style={styles.stylePrice}>{playcount}</div>
         {this.props.deal.isExpanded && (
@@ -48,8 +47,13 @@ class DealItem extends React.Component {
             ))}
           </div>
         )}
-        <button onClick={this.hideOneDealClick}>Hide</button>
-      </div>
+            <div>
+                <button onClick={this.hideOneDealClick}>Hide</button>
+            </div>
+            <div>
+                <button onClick={this.showImagesForOneArtist}>Show image for track</button>
+            </div>
+     </div>
     );
   }
 }

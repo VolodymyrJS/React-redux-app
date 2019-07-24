@@ -10,7 +10,8 @@ export const fetchMoreTracks = () => {
     const resp = await axios.get(queryTrack);
     dispatch({
       type: 'SHOW_ALL_TRACKS',
-      allTracks: resp.data.tracks.track.slice(5)
+      allTracks: resp.data.tracks.track.slice(5),
+      isFetching: false
     });
   };
 };

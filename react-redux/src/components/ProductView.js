@@ -1,18 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { connect } from 'react-redux';
+import uuidv from 'uuid/v4';
 import {
   putArtistDataToState
 } from '../store/actions';
 
 class ProductView extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = { info: '' };
-  // }
 
-  componentDidMount() {
+    componentDidMount() {
     this.props.putArtistDataToState(this.props.match.params.artist);
   }
 
@@ -21,9 +17,21 @@ class ProductView extends React.Component {
       <div>
         {this.props.aboutArtist && (<div>
           <h1>{this.props.aboutArtist.name}</h1>
-          {/* <h2>{this.state.info.name}</h2>
-          <h3>{this.props.info}</h3> */}
-          <h3>Product ID: {this.props.match.params.artist}</h3>
+          <div>
+            <h3>Images:</h3>
+            <div>
+                {this.props.aboutArtist.image.map(element => element['#text']).map(imgUrl => (
+                    <img alt="img" key={uuidv()} src={imgUrl} />
+                ))}
+            </div>
+            <div className="artist-tegs">
+            <h3>Tags: </h3>
+                {this.props.aboutArtist.tags.tag.map(element => element.name).map(tag => (
+                    <p key={uuidv()}>{tag}</p>
+                ))}
+            </div>
+          </div>
+          <h4>{this.props.aboutArtist.bio.content}</h4>
           <Link to={`/`}>Back to home</Link>
         </div>)}
       </div>

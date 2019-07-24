@@ -18,7 +18,8 @@ export default (state, action) => {
     case 'SHOW_ALL_TRACKS':
       return {
         ...state,
-        tracks: [...state.tracks, ...action.allTracks]
+        tracks: [...state.tracks, ...action.allTracks],
+        isFetching: false
       };
     case 'GET_INFO_ABOUT_ARTIST':
       return {

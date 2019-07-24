@@ -9,7 +9,7 @@ class FetchMoreArtistButton extends React.Component {
         disabled={this.props.isFetching}
         onClick={this.props.fetchMoreTracks}
       >
-        {this.props.isFetching ? 'Fetching tracks' : 'Fetch more tracks'}
+        this.props.isFetching}Fetch
       </button>
     );
   }
