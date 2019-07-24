@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchMoreTracks } from '../store/actions';
+import { fetchMoreTracks } from '../store/actions/actions';
 
 class FetchMoreArtistButton extends React.Component {
   render() {
@@ -15,8 +15,8 @@ class FetchMoreArtistButton extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-    isFetching: state.isFetching
+const mapStateToProps = state => ({
+  isFetching: state.isFetching
 });
 
 export default connect(

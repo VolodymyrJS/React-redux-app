@@ -2,7 +2,6 @@ import React from 'react';
 import uuidv from 'uuid/v4';
 import DealItem from './DealItem';
 import { connect } from 'react-redux';
-//import  '../css/track.css';
 
 class DealList extends React.Component {
   render() {
@@ -10,9 +9,11 @@ class DealList extends React.Component {
       <div className="deal-list">
         <h1 className="title">List of tracks</h1>
         {this.props.tracks.map(deal => (
-            <ol key={uuidv()}>
-                <li><DealItem deal={deal} /></li>
-            </ol>
+          <ol key={uuidv()}>
+            <li>
+              <DealItem deal={deal} />
+            </li>
+          </ol>
         ))}
       </div>
     );

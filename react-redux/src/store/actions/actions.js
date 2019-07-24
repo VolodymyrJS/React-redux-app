@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { queryTrack, queryArtist } from '../fetchConfig';
+import { queryTrack, queryArtist } from '../../fetchConfig';
 
 export const expandOneDeal = dealKey => ({ type: 'SHOW_IMAGE', dealKey });
 
@@ -10,13 +10,12 @@ export const fetchMoreTracks = () => {
     const resp = await axios.get(queryTrack);
     dispatch({
       type: 'SHOW_ALL_TRACKS',
-      allTracks: resp.data.tracks.track.slice(5),
+      allTracks: resp.data.tracks.track.slice(5)
     });
   };
 };
 
-export const putArtistDataToState = (artistId) => {
-
+export const putArtistDataToState = artistId => {
   const url = queryArtist(artistId);
 
   return async dispatch => {

@@ -8,6 +8,11 @@ const format_about = '&format=json';
 
 export const queryTrack = url + method + key + format;
 
-export const queryArtist = (artistId) => {
-    return url_about + `?method=artist.getinfo&artist=${artistId}&api_` + key_about + format_about;
+export const queryArtist = artistId => {
+  return (
+    url_about +
+    `?method=artist.getinfo&artist=${artistId}&api_` +
+    key_about +
+    format_about
+  );
 };

@@ -5,7 +5,7 @@ import {
   expandOneDeal,
   hideOneDeal,
   putArtistDataToState
-} from '../store/actions';
+} from '../store/actions/actions';
 import { Link } from 'react-router-dom';
 import { styles } from '../css/tracks';
 
@@ -29,9 +29,7 @@ class DealItem extends React.Component {
         <div style={styles.styleTitle}>
           {artist.name}
           <div>
-            <Link to={`/product/${artist.name}`}>
-                About artist
-            </Link>
+            <Link to={`/product/${artist.name}`}>About artist</Link>
           </div>
         </div>
         <div style={styles.stylePrice}>{playcount}</div>
@@ -47,13 +45,15 @@ class DealItem extends React.Component {
             ))}
           </div>
         )}
-            <div>
-                <button onClick={this.hideOneDealClick}>Hide</button>
-            </div>
-            <div>
-                <button onClick={this.showImagesForOneArtist}>Show image for track</button>
-            </div>
-     </div>
+        <div>
+          <button onClick={this.hideOneDealClick}>Hide</button>
+        </div>
+        <div>
+          <button onClick={this.showImagesForOneArtist}>
+            Show image for track
+          </button>
+        </div>
+      </div>
     );
   }
 }

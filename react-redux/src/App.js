@@ -4,8 +4,7 @@ import App from './components/App';
 import axios from 'axios';
 import storeConfig from './store/storeConfig';
 import { Provider } from 'react-redux';
-import { queryTrack, queryArtist } from './fetchConfig';
-//import FetchMoreArtistButton from './components/FetchMoreArtistButton';
+import { queryTrack } from './fetchConfig';
 
 async function getData() {
   const listOfTracks = await axios.get(queryTrack);
