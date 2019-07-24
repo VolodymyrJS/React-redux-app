@@ -19,7 +19,7 @@ export default (state, action) => {
       return {
         ...state,
         tracks: [...state.tracks, ...action.allTracks],
-        isFetching: false
+        isFetching: true
       };
     case 'GET_INFO_ABOUT_ARTIST':
       return {

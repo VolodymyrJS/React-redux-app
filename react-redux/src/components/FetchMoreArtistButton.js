@@ -9,13 +9,17 @@ class FetchMoreArtistButton extends React.Component {
         disabled={this.props.isFetching}
         onClick={this.props.fetchMoreTracks}
       >
-        this.props.isFetching}Fetch
+        Fetch more tracks
       </button>
     );
   }
 }
 
+const mapStateToProps = (state) => ({
+    isFetching: state.isFetching
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   { fetchMoreTracks }
 )(FetchMoreArtistButton);

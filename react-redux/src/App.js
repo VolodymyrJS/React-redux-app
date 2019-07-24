@@ -11,7 +11,8 @@ async function getData() {
   const listOfTracks = await axios.get(queryTrack);
 
   const store = storeConfig({
-    tracks: listOfTracks.data.tracks.track.slice(0, 5)
+    tracks: listOfTracks.data.tracks.track.slice(0, 5),
+    isFetching: false
   });
 
   ReactDOM.render(

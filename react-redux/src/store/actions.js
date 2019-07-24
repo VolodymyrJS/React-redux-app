@@ -11,12 +11,12 @@ export const fetchMoreTracks = () => {
     dispatch({
       type: 'SHOW_ALL_TRACKS',
       allTracks: resp.data.tracks.track.slice(5),
-      isFetching: false
     });
   };
 };
 
 export const putArtistDataToState = (artistId) => {
+
   const url = queryArtist(artistId);
 
   return async dispatch => {
