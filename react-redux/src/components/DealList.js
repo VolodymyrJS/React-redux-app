@@ -10,9 +10,9 @@ class DealList extends React.Component {
       <div className="deal-list">
         <h1 className="title">List of tracks</h1>
         {this.props.tracks.map(deal => (
-          <div key={uuidv()}>
-            <DealItem deal={deal} />
-          </div>
+            <ol key={uuidv()}>
+                <li><DealItem deal={deal} /></li>
+            </ol>
         ))}
       </div>
     );
