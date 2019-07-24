@@ -9,12 +9,9 @@ import { queryTrack, queryArtist } from './fetchConfig';
 
 async function getData() {
   const listOfTracks = await axios.get(queryTrack);
-  const aboutArtist = await axios.get(queryArtist);
 
   const store = storeConfig({
-    tracks: listOfTracks.data.tracks.track.slice(0, 5),
-    info: aboutArtist.data,
-    artistName: ''
+    tracks: listOfTracks.data.tracks.track.slice(0, 5)
   });
 
   ReactDOM.render(

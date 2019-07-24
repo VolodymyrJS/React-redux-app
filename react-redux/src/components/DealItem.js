@@ -31,10 +31,7 @@ class DealItem extends React.Component {
           <Link to={`/about/${artist.name}`}>
             <button>About artist</button>
           </Link>
-          <Link
-            onClick={this.props.putArtistDataToState}
-            to={`/product/${artist.name}`}
-          >
+          <Link to={`/product/${artist.name}`}>
             About artist
           </Link>
         </div>

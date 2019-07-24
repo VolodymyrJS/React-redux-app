@@ -15,12 +15,15 @@ export const fetchMoreTracks = () => {
   };
 };
 
-export const putArtistDataToState = () => {
+export const putArtistDataToState = (artistId) => {
+  const url = queryArtist(artistId);
+
   return async dispatch => {
-    const resp = await axios.get(queryArtist);
+    const resp = await axios.get(url);
+
     dispatch({
       type: 'GET_INFO_ABOUT_ARTIST',
-      artistData: resp.data
+      artistData: resp.data.artist
     });
   };
 };
